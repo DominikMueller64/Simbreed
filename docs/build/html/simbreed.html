@@ -1,0 +1,1016 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>simbreed package &mdash; simbreed 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="simbreed 1.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="simbreed-package">
+<h1>simbreed package<a class="headerlink" href="#simbreed-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simbreed.CrossoverSimulator">
+<span id="simbreed-crossoversimulator-module"></span><h2>simbreed.CrossoverSimulator module<a class="headerlink" href="#module-simbreed.CrossoverSimulator" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="simbreed.CrossoverSimulator.CrossoverSimulator">
+<em class="property">class </em><code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">CrossoverSimulator</code><span class="sig-paren">(</span><em>m=10</em>, <em>p=0</em>, <em>obligateChiasma=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.CrossoverSimulator.CrossoverSimulator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Simulate crossover locations on a single meiotic product using
+the Stahl model.</p>
+<p>m : Interference parameter</p>
+<p>p : Proportion of chiasmata from non-interference mechanism</p>
+<p>obligateChiasma : Boolean indicating if obligate chiasma is required</p>
+<p>This is a Python translation of the crossover simulator used in the
+R-package &#8216;simcross&#8217; of Karl. W. Broman [Add link to github here].</p>
+<p>Chiasma locations are a superposition of two processes: a proportion p
+exhibiting no interference, and a proportion (1-p) following the
+chi-square model with interference parameter m. Crossover locations are
+derived by thinning the chiasma locations with probability 1/2.</p>
+<p>Simulations are under the Stahl model with the interference parameter
+being an integer. This is an extension of the chi-square model, but with
+chiasmata being the superposition of two processes, one following the
+chi-square model and the other exhibiting no interference.</p>
+<p>The source code is a translation from
+<a class="reference external" href="https://github.com/kbroman/simcross/">R/simcross</a> package</p>
+<p>Copenhaver, G. P., Housworth, E. A. and Stahl, F. W. (2002) Crossover
+interference in arabidopsis. Genetics 160, 1631–1639.</p>
+<p>Foss, E., Lande, R., Stahl, F. W. and Steinberg, C. M. (1993) Chiasma
+interference as a function of genetic distance. Genetics 133, 681–691.</p>
+<p>Zhao, H., Speed, T. P. and McPeek, M. S. (1995) Statistical analysis of
+crossover interference using the chi-square model. Genetics 139, 1045–1056.</p>
+<dl class="method">
+<dt id="simbreed.CrossoverSimulator.CrossoverSimulator.simulateCrossover">
+<code class="descname">simulateCrossover</code><span class="sig-paren">(</span><em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.CrossoverSimulator.CrossoverSimulator.simulateCrossover" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate crossing over events</p>
+<dl class="docutils">
+<dt>L</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">positive float</span><dd>Length of the chromosome in centiMorgan</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>A list with the positions of crossover events</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.CrossoverSimulator.dpoisson">
+<code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">dpoisson</code><a class="headerlink" href="#simbreed.CrossoverSimulator.dpoisson" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.CrossoverSimulator.factorial">
+<code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">factorial</code><a class="headerlink" href="#simbreed.CrossoverSimulator.factorial" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.CrossoverSimulator.funcToZero">
+<code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">funcToZero</code><a class="headerlink" href="#simbreed.CrossoverSimulator.funcToZero" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simbreed.Functions">
+<span id="simbreed-functions-module"></span><h2>simbreed.Functions module<a class="headerlink" href="#module-simbreed.Functions" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="simbreed.Functions.IDGenerationHandler">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">IDGenerationHandler</code><span class="sig-paren">(</span><em>idGetter</em>, <em>ID</em>, <em>generation</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.IDGenerationHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.LD_r2_routine">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">LD_r2_routine</code><a class="headerlink" href="#simbreed.Functions.LD_r2_routine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.LD_routine">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">LD_routine</code><a class="headerlink" href="#simbreed.Functions.LD_routine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.LPS_routine">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">LPS_routine</code><a class="headerlink" href="#simbreed.Functions.LPS_routine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.SMC_routine">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">SMC_routine</code><a class="headerlink" href="#simbreed.Functions.SMC_routine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.allUnique">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">allUnique</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.allUnique" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether all elements are unique.</p>
+<dl class="docutils">
+<dt>x</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span><dd>Any iterable.</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span><dd>Returns <code class="docutils literal"><span class="pre">True</span></code> is all elements in are unique and <code class="docutils literal"><span class="pre">False</span></code> if not.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.anyClose">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">anyClose</code><span class="sig-paren">(</span><em>iterable</em>, <em>abs_tol=1e-06</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.anyClose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if adjacent floats in an iterable are numerically identical</p>
+<dl class="docutils">
+<dt>iterable</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span><dd>An iterable.</dd>
+<dt>abs_tol</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float (default = 1e-6)</span><dd>The absolute tolerance used to check if values are distinct.</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span><dd>True if any pair is close, False otherwise.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.checkEqual">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">checkEqual</code><span class="sig-paren">(</span><em>iterator</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.checkEqual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if all elements are identical.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.dualIDGenerationHandler">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">dualIDGenerationHandler</code><span class="sig-paren">(</span><em>idGetter</em>, <em>ID</em>, <em>generation</em>, <em>IDb</em>, <em>generationB</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.dualIDGenerationHandler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.getNewID">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewID</code><span class="sig-paren">(</span><em>n=1</em>, <em>digits=14</em>, <em>sequence=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.getNewID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.getNewIDNumbaArray">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewIDNumbaArray</code><a class="headerlink" href="#simbreed.Functions.getNewIDNumbaArray" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.getNewIDNumbaSingle">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewIDNumbaSingle</code><a class="headerlink" href="#simbreed.Functions.getNewIDNumbaSingle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.getNewID_old">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewID_old</code><span class="sig-paren">(</span><em>n=1</em>, <em>nChar=8</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.getNewID_old" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a new UUID (Universally Unique Identifier).</p>
+<dl class="docutils">
+<dt>n</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">natural number (default = 1)</span><dd>The number of IDs that should be generated.</dd>
+<dt>nChar</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">int (default = 8)</span><dd>The number of characters of the ID.</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">integer or list of integers</span><dd><div class="first last line-block">
+<div class="line">If n = 1, corresponding to the default, then a single ID is returned.</div>
+<div class="line">If n &gt; 1, a list of IDs is returned.</div>
+</div>
+</dd>
+</dl>
+<p>If nChar &lt; 22, the ID is not guaranteed to be universally unique (UUID).
+However, for the default (nChar = 8), there are 57^8 =~ 100 Billon
+possible sequences, which still guarantees an essentially zero collision
+probability within a simulation session while greatly increasing
+readability of IDs for introspection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.helper">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">helper</code><a class="headerlink" href="#simbreed.Functions.helper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.isCyclic">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">isCyclic</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.isCyclic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if the directed graph g has a cycle.
+g must be represented as a dictionary mapping vertices to
+iterables of neighbouring vertices. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cyclic</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,)})</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cyclic</span><span class="p">({</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,),</span> <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="mi">3</span><span class="p">,),</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,)})</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.isSingle">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">isSingle</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.isSingle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.isSorted">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">isSorted</code><span class="sig-paren">(</span><em>iterable</em>, <em>reverse=False</em>, <em>abs_tol=1e-06</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.isSorted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if an iterable is sorted, possibly reverse sorted.</p>
+<p>See the answer by hughdbrown
+<a class="reference external" href="http://stackoverflow.com/questions/3755136/pythonic-way-to-check-if-a-list-is-sorted-or-not/">here</a>.</p>
+<dl class="docutils">
+<dt>iterable</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span><dd>An iterable.</dd>
+<dt>reverse</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">boolean (default = False)</span><dd>Should the iterable be checked for reverse sorting?</dd>
+<dt>abs_tol</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">float (default = 1e-6)</span><dd>The absolute tolerance used to check if values are distinct.</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span><dd>If the iterable is (reverse) sorted <code class="docutils literal"><span class="pre">True</span></code>, otherwise <code class="docutils literal"><span class="pre">False</span></code>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.matrixComputer">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">matrixComputer</code><span class="sig-paren">(</span><em>idGetter</em>, <em>function</em>, <em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em>, <em>symmetric=True</em>, <em>dtype=&lt;class 'numpy.float64'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.matrixComputer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.myBisect_left">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">myBisect_left</code><a class="headerlink" href="#simbreed.Functions.myBisect_left" title="Permalink to this definition">¶</a></dt>
+<dd><p>My pruned bisection algorithm.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.ncol">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">ncol</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.ncol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of columns of a 2D numpy array.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.no_unique">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">no_unique</code><a class="headerlink" href="#simbreed.Functions.no_unique" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.nrow">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">nrow</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.nrow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of rows of a 2D numpy array.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.order">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">order</code><span class="sig-paren">(</span><em>iterable</em>, <em>reverse=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determine the order of an iterable, possibly reverse sorted.</p>
+<p>This is analogous to R&#8217;s <code class="docutils literal"><span class="pre">order()</span></code> function.</p>
+<dl class="docutils">
+<dt>iterable</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span><dd>An iterable for which the order of the elements is sought.
+Must support indexing.</dd>
+<dt>reverse</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">boolean (default = False)</span><dd>Should the order be that of the reverse sorted iterable?</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>List of integers with the (reverse) order of elements in <code class="docutils literal"><span class="pre">iterable</span></code>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.pearson">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">pearson</code><a class="headerlink" href="#simbreed.Functions.pearson" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.plotMatrix">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">plotMatrix</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.plotMatrix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.reorder">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">reorder</code><span class="sig-paren">(</span><em>iterable</em>, <em>order</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.reorder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reorder a list.</p>
+<dl class="docutils">
+<dt>iterable</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">iterable</span><dd>An iterable that should be reordered.
+Must support indexing.</dd>
+<dt>order</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>A list that contains the new order as permuted indices.
+Must support <code class="docutils literal"><span class="pre">enumerate()</span></code></dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>A reordered iterable of the same type as <code class="docutils literal"><span class="pre">iterable</span></code>.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.simulateMeiosis">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">simulateMeiosis</code><span class="sig-paren">(</span><em>parent</em>, <em>crossoverSimulator</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.simulateMeiosis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simulate Meiosis</p>
+<dl class="docutils">
+<dt>parent</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">Individual</span><dd>An Individual for which meiosis should be simulated</dd>
+<dt>crossoverSimulator</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">CrossoverSimulator</span><dd>A CrossoverSimulator previously instantiated</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">Gamete</span><dd>A Gamete as meiotic product</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.sort">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">sort</code><span class="sig-paren">(</span><em>graph</em>, <em>placeFounderFirst=True</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the pedigree.</p>
+<p>If no data on generations are available, the algorithm provided in
+<a class="reference external" href="http://www.medwelljournals.com/fulltext/?doi=javaa.2009.177.182">Zhang et al. (2009)</a> is applied to sort from scratch.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Functions.subroutineMeiosis">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">subroutineMeiosis</code><a class="headerlink" href="#simbreed.Functions.subroutineMeiosis" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-simbreed.Population">
+<span id="simbreed-population-module"></span><h2>simbreed.Population module<a class="headerlink" href="#module-simbreed.Population" title="Permalink to this headline">¶</a></h2>
+<p>Demonstrate high quality docstrings.</p>
+<p>Module-level docstrings appear as the first &#8220;statement&#8221; in a module. Remember,
+that while strings are regular Python statements, comments are not, so an
+inline comment may precede the module-level docstring.</p>
+<p>After importing a module, you can access this special string object through the
+<code class="docutils literal"><span class="pre">__doc__</span></code> attribute; yes, it&#8217;s actually available as a runtime attribute,
+despite not being given an explicit name! The <code class="docutils literal"><span class="pre">__doc__</span></code> attribute is also
+what is rendered when you call <code class="docutils literal"><span class="pre">help()</span></code> on a module, or really any other
+object in Python.</p>
+<p>You can also document a package using the module-level docstring in the
+package&#8217;s <code class="docutils literal"><span class="pre">__init__.py</span></code> file.</p>
+<dl class="class">
+<dt id="simbreed.Population.FounderGamete">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">FounderGamete</code><span class="sig-paren">(</span><em>chromLengths</em>, <em>ID=None</em>, <em>flesh=None</em>, <em>individual=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.FounderGamete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simbreed.Population.Gamete" title="simbreed.Population.Gamete"><code class="xref py py-class docutils literal"><span class="pre">simbreed.Population.Gamete</span></code></a></p>
+<p>Subclasses <code class="docutils literal"><span class="pre">Gamete</span></code></p>
+<p>lineage : lineage of the founder gamete</p>
+<p>The user does not need to manually instantiate new FounderGametes.</p>
+<dl class="attribute">
+<dt id="simbreed.Population.FounderGamete.lineage">
+<code class="descname">lineage</code><a class="headerlink" href="#simbreed.Population.FounderGamete.lineage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.Gamete">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">Gamete</code><span class="sig-paren">(</span><em>skeleton</em>, <em>ID=None</em>, <em>father=None</em>, <em>mother=None</em>, <em>flesh=None</em>, <em>parent=None</em>, <em>individual=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.Gamete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>skeleton : structure of the genome with reference to founder gametes</p>
+<p>ID : unique identifier</p>
+<p>father : father gamete</p>
+<p>mother : mother gamete</p>
+<p>flesh : genotype with reference to founder alleles</p>
+<p>Note that the words &#8216;father&#8217; and &#8216;mother&#8217; are only used to distinguish
+the two parental gametes.</p>
+<dl class="attribute">
+<dt id="simbreed.Population.Gamete.ID">
+<code class="descname">ID</code><a class="headerlink" href="#simbreed.Population.Gamete.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.Gamete.enflesh">
+<code class="descname">enflesh</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.Gamete.enflesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Genotypes.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Gamete.father">
+<code class="descname">father</code><a class="headerlink" href="#simbreed.Population.Gamete.father" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Gamete.flesh">
+<code class="descname">flesh</code><a class="headerlink" href="#simbreed.Population.Gamete.flesh" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Gamete.mother">
+<code class="descname">mother</code><a class="headerlink" href="#simbreed.Population.Gamete.mother" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Gamete.parent">
+<code class="descname">parent</code><a class="headerlink" href="#simbreed.Population.Gamete.parent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Gamete.skeleton">
+<code class="descname">skeleton</code><a class="headerlink" href="#simbreed.Population.Gamete.skeleton" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.Genome">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">Genome</code><span class="sig-paren">(</span><em>chromLengths</em>, <em>positions=None</em>, <em>locusNames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.Genome" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Genome object</p>
+<p>chromLengths : A list with chromosome lengths in <strong>Centimorgan</strong>. This is
+everything that is required for starting to simulate.</p>
+<p>positions : A list containing lists of genetic positions of loci. This is
+only required for creating genotypes after simulation.</p>
+<p>locusNames : A list containing lists of names of loci.</p>
+<p>numChrom : The number of chromosomes.</p>
+<p>Note that <code class="docutils literal"><span class="pre">chromLengths</span></code> can only be set once during instantiation, but
+not later on, as opposed to <code class="docutils literal"><span class="pre">positions</span></code> and <code class="docutils literal"><span class="pre">locusNames</span></code>. If the length
+of chromosomes changes, a new <code class="docutils literal"><span class="pre">Genome</span></code> object must be instantiated.</p>
+<p>Note than <code class="docutils literal"><span class="pre">LocusNames</span></code> can only be specified if <code class="docutils literal"><span class="pre">positions</span></code> are given.</p>
+<p>Note that all chromosomes start at 0.0 Centrimorgan.</p>
+<dl class="attribute">
+<dt id="simbreed.Population.Genome.chromLengths">
+<code class="descname">chromLengths</code><a class="headerlink" href="#simbreed.Population.Genome.chromLengths" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Genome.locusNames">
+<code class="descname">locusNames</code><a class="headerlink" href="#simbreed.Population.Genome.locusNames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Genome.numChrom">
+<code class="descname">numChrom</code><a class="headerlink" href="#simbreed.Population.Genome.numChrom" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Genome.positions">
+<code class="descname">positions</code><a class="headerlink" href="#simbreed.Population.Genome.positions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.Individual">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">Individual</code><span class="sig-paren">(</span><em>population</em>, <em>parents</em>, <em>generation</em>, <em>DH</em>, <em>F</em>, <em>ID=None</em>, <em>reproGroup=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.Individual" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.DH">
+<code class="descname">DH</code><a class="headerlink" href="#simbreed.Population.Individual.DH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.F">
+<code class="descname">F</code><a class="headerlink" href="#simbreed.Population.Individual.F" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.ID">
+<code class="descname">ID</code><a class="headerlink" href="#simbreed.Population.Individual.ID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.Individual.enskelet">
+<code class="descname">enskelet</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.Individual.enskelet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.founder">
+<code class="descname">founder</code><a class="headerlink" href="#simbreed.Population.Individual.founder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.gametes">
+<code class="descname">gametes</code><a class="headerlink" href="#simbreed.Population.Individual.gametes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.generation">
+<code class="descname">generation</code><a class="headerlink" href="#simbreed.Population.Individual.generation" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.parents">
+<code class="descname">parents</code><a class="headerlink" href="#simbreed.Population.Individual.parents" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.population">
+<code class="descname">population</code><a class="headerlink" href="#simbreed.Population.Individual.population" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.Population.Individual.semifounder">
+<code class="descname">semifounder</code><a class="headerlink" href="#simbreed.Population.Individual.semifounder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.Root">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">Root</code><a class="headerlink" href="#simbreed.Population.Root" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.genoPop">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">genoPop</code><span class="sig-paren">(</span><em>chromLengths</em>, <em>crossoverSimulator</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simbreed.Population.skPop" title="simbreed.Population.skPop"><code class="xref py py-class docutils literal"><span class="pre">simbreed.Population.skPop</span></code></a></p>
+<dl class="method">
+<dt id="simbreed.Population.genoPop.GRM">
+<code class="descname">GRM</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>method='vanRaden1'</em>, <em>p=None</em>, <em>assureBiallelic=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.GRM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.genoPop.LD">
+<code class="descname">LD</code><span class="sig-paren">(</span><em>ID</em>, <em>distMin</em>, <em>distMax</em>, <em>generation=None</em>, <em>metric='r2'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.LD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.genoPop.LPS">
+<code class="descname">LPS</code><span class="sig-paren">(</span><em>distMin</em>, <em>distMax</em>, <em>ID=None</em>, <em>IDb=None</em>, <em>generation=None</em>, <em>generationB=None</em>, <em>method='correlation'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.LPS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.genoPop.addFlesh">
+<code class="descname">addFlesh</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.addFlesh" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add genotypes to individuals</p>
+<dl class="docutils">
+<dt>generation</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">integer (default = all generations)</span><dd>The generation for which genotypes should be computed.</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="simbreed.Population.genoPop.fromSkPop">
+<em class="property">classmethod </em><code class="descname">fromSkPop</code><span class="sig-paren">(</span><em>population</em>, <em>genome</em>, <em>founderFlesh</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.fromSkPop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.genoPop.genoIndividuals">
+<code class="descname">genoIndividuals</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.genoIndividuals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute genotype matrices for individuals</p>
+<dl class="docutils">
+<dt>generation</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">integer (default = last generation)</span><dd>The generation for which genotype matrices should be computed.</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">dictionary</span><dd>A dictionary containing the genotypes.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.genoPop.genoMatrix">
+<code class="descname">genoMatrix</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.genoMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute a genotype matrix</p>
+<dl class="docutils">
+<dt>generation</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">integer (default = last generation)</span><dd>The generation for which the genotype matrix should be computed.</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">dictionary</span><dd>A dictionary holding the the IDs of the individuals, locus names if
+provided and the genotype matrix.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.genoPop.pairwiseLD">
+<code class="descname">pairwiseLD</code><span class="sig-paren">(</span><em>ID</em>, <em>generation=None</em>, <em>metric='r2'</em>, <em>asDataFrame=True</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.genoPop.pairwiseLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.pedPop">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">pedPop</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">sortedcollections.recipes.ValueSortedDict</span></code></p>
+<dl class="method">
+<dt id="simbreed.Population.pedPop.allID">
+<code class="descname">allID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.allID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all IDs, except for the root of the population.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>value</em>, <em>reproGroup=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.append" title="Permalink to this definition">¶</a></dt>
+<dd><p>Append an entry.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.countOffspring">
+<code class="descname">countOffspring</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.countOffspring" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.createFounders">
+<code class="descname">createFounders</code><span class="sig-paren">(</span><em>n</em>, <em>ID=None</em>, <em>F=None</em>, <em>returnID=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.createFounders" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.cross">
+<code class="descname">cross</code><span class="sig-paren">(</span><em>fatherID</em>, <em>motherID</em>, <em>generation=None</em>, <em>ID=None</em>, <em>returnID=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.cross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cross two individuals.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.doubledHaploidization">
+<code class="descname">doubledHaploidization</code><span class="sig-paren">(</span><em>size=1</em>, <em>ID=None</em>, <em>returnID=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.doubledHaploidization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce doubled haploids.</p>
+<p>This naturally does not need to account for reproductive groups.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.expGeneContr">
+<code class="descname">expGeneContr</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.expGeneContr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.extend">
+<code class="descname">extend</code><span class="sig-paren">(</span><em>values</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.extend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extend by appending several entries.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="simbreed.Population.pedPop.fromPedigree">
+<em class="property">classmethod </em><code class="descname">fromPedigree</code><span class="sig-paren">(</span><em>ID</em>, <em>father</em>, <em>mother</em>, <em>DH=None</em>, <em>F=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.fromPedigree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct a &#8216;Pedigree&#8217; object from a known pedigree.</p>
+<dl class="docutils">
+<dt>ID</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>List with unique identifiers.</dd>
+<dt>fatherID</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>List with IDs of the male parents. Must be &#8216;None&#8217; if unknown.</dd>
+<dt>motherID: list</dt>
+<dd>List with IDs of the female parents. Must be &#8216;None&#8217; if unknown.</dd>
+<dt>DH: list (default: there are no doubled haploids)</dt>
+<dd>List with booleans indicating the if the respective individual is
+a doubled haploid. Ignored for founders.</dd>
+<dt>F: dictionary (default: all founders are outbred)</dt>
+<dd>Dictionary specifing inbreeding coefficients for founders</dd>
+</dl>
+<p>This function should be employed by the user to buil a &#8216;Pedigree&#8217;
+object for simulation from a previously known pedigree.</p>
+<p>If founders are inbreed, this can be specified in the
+&#8216;F&#8217; argument. Founders can per definition be no
+doubledHaploids, but can be completely inbreed, which is equivalent
+for founders.</p>
+<p>Generation information will automatically be inferred by the given
+relationships between individuals. Individuals having both parents
+unknown are treated as founder individuals.</p>
+<p>Having one parent known and another one unknown is untested and might
+lead to undefined behaviour. However, this case is rather irrelevant
+for simulation studies.</p>
+<p>Relationships between founder individuals cannot be accounted for.</p>
+<p>The pedigree will automatically be extended and sorted if necessary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.getDoubledHaploids">
+<code class="descname">getDoubledHaploids</code><span class="sig-paren">(</span><em>generation</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.getDoubledHaploids" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.getFounderID">
+<code class="descname">getFounderID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.getFounderID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all IDs of founder individuals.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.getID">
+<code class="descname">getID</code><span class="sig-paren">(</span><em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.getID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all IDs of a specific generation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.getReproGroups">
+<code class="descname">getReproGroups</code><span class="sig-paren">(</span><em>reproGroupGen</em>, <em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.getReproGroups" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.inbreeding">
+<code class="descname">inbreeding</code><span class="sig-paren">(</span><em>size=1</em>, <em>ID=None</em>, <em>returnID=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.inbreeding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform self-fertilization.</p>
+<p>This naturally does not need to account for reproductive groups.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.inbreedingCoef">
+<code class="descname">inbreedingCoef</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>method='tabular'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.inbreedingCoef" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.isAncestor">
+<code class="descname">isAncestor</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.isAncestor" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.lastGen">
+<code class="descname">lastGen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.lastGen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of the last generation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.makeA">
+<code class="descname">makeA</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em>, <em>method='tabular'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.makeA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.makeAinv">
+<code class="descname">makeAinv</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em>, <em>method='tabular'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.makeAinv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.makeD">
+<code class="descname">makeD</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em>, <em>method='tabular'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.makeD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.mendelianSamplingVariance">
+<code class="descname">mendelianSamplingVariance</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.mendelianSamplingVariance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.numInd">
+<code class="descname">numInd</code><span class="sig-paren">(</span><em>generation</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.numInd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of individuals in a certain generation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.offspring">
+<code class="descname">offspring</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.offspring" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.randomMating">
+<code class="descname">randomMating</code><span class="sig-paren">(</span><em>size</em>, <em>allowSelfing=True</em>, <em>ID=None</em>, <em>returnID=False</em>, <em>reproGroupGen=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.randomMating" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform random mating.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.recode">
+<code class="descname">recode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.recode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.returnInd">
+<code class="descname">returnInd</code><span class="sig-paren">(</span><em>ID</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.returnInd" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all Indivdiuals with given IDs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.roundRobin">
+<code class="descname">roundRobin</code><span class="sig-paren">(</span><em>size=1</em>, <em>ID=None</em>, <em>returnID=False</em>, <em>reproGroupGen=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.roundRobin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform mating according to a round robin design.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.subset">
+<code class="descname">subset</code><span class="sig-paren">(</span><em>ID</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.subset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subset the population and return a copy.</p>
+<p>This leaves the original population unchanged.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.synthetic">
+<code class="descname">synthetic</code><span class="sig-paren">(</span><em>size=1</em>, <em>ID=None</em>, <em>reciprocals=False</em>, <em>returnID=False</em>, <em>reproGroupGen=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.synthetic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform mating according to a synthetic design.</p>
+<p>Note: Making reciprocals does not really make sense in a model where
+traits are only influenced by nuclear DNA.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.toDataFrame">
+<code class="descname">toDataFrame</code><span class="sig-paren">(</span><em>showGeneration=True</em>, <em>showDH=True</em>, <em>showF=True</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.toDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.pedPop.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>file</em>, <em>sep=' '</em>, <em>na_rep='NA'</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.Population.skPop">
+<em class="property">class </em><code class="descclassname">simbreed.Population.</code><code class="descname">skPop</code><span class="sig-paren">(</span><em>chromLengths</em>, <em>crossoverSimulator</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simbreed.Population.pedPop" title="simbreed.Population.pedPop"><code class="xref py py-class docutils literal"><span class="pre">simbreed.Population.pedPop</span></code></a></p>
+<dl class="classmethod">
+<dt id="simbreed.Population.skPop.fromPedPop">
+<em class="property">classmethod </em><code class="descname">fromPedPop</code><span class="sig-paren">(</span><em>population</em>, <em>chromLengths</em>, <em>crossoverSimulator</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.fromPedPop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt id="simbreed.Population.skPop.fromPedigree">
+<em class="property">classmethod </em><code class="descname">fromPedigree</code><span class="sig-paren">(</span><em>ID</em>, <em>father</em>, <em>mother</em>, <em>chomLengths</em>, <em>crossoverSimulator</em>, <em>DH=None</em>, <em>F=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.fromPedigree" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.skPop.getLineage">
+<code class="descname">getLineage</code><span class="sig-paren">(</span><em>pos</em>, <em>chrom</em>, <em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.getLineage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.skPop.realFounderGeneContrMatrix">
+<code class="descname">realFounderGeneContrMatrix</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>includeUnknown=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.realFounderGeneContrMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate realized gene contribution of founders</p>
+<p>ID : string/integer or list (default = all individuals)</p>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">dictionary</span><dd>A dictionary containing a matrix with founder gene contributions,
+a list with column names (founders) and row names (individuals).</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.skPop.realGeneContr">
+<code class="descname">realGeneContr</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.realGeneContr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a matrix of realized gene contributions.</p>
+<dl class="docutils">
+<dt>IDa</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>List of parent individuals</dd>
+<dt>IDp</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>List of progeny individuals</dd>
+</dl>
+<dl class="docutils">
+<dt>out</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">dictionary</span><dd><p class="first">A dictionary containing a matrix of realized gene contributions,
+a list with row names (IDp) and a list with column names (IDa).</p>
+<p class="last">Note: This function repeatedly calls &#8216;pairRealGeneContr&#8217;, which is
+highly inefficient. For a more efficient version, directly work
+with the function &#8216;realGeneContr&#8217; or devise a new algorithm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.skPop.realIBD">
+<code class="descname">realIBD</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em>, <em>IDb=None</em>, <em>generationB=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.realIBD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the realized IBD coefficient between all individuals in a
+generation</p>
+<dl class="docutils">
+<dt>generation</dt>
+ <span class="classifier-delimiter">:</span> <span class="classifier">integer (defaults to the last generation)</span><dd>The generation for which realized IBD coefficients should be
+calculated.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.skPop.recombinationNumber">
+<code class="descname">recombinationNumber</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.recombinationNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the total number of recombinations that occured, starting
+from the founder genomes.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="simbreed-deleteme-module">
+<h2>simbreed.deleteme module<a class="headerlink" href="#simbreed-deleteme-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simbreed.genoMatrix">
+<span id="simbreed-genomatrix-module"></span><h2>simbreed.genoMatrix module<a class="headerlink" href="#module-simbreed.genoMatrix" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="simbreed.genoMatrix.genoMatrix">
+<em class="property">class </em><code class="descclassname">simbreed.genoMatrix.</code><code class="descname">genoMatrix</code><a class="headerlink" href="#simbreed.genoMatrix.genoMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="simbreed.genoMatrix.genoMatrix.GRM">
+<code class="descname">GRM</code><span class="sig-paren">(</span><em>method='vanRaden2'</em>, <em>freq=None</em>, <em>assureBiallelic=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.genoMatrix.genoMatrix.GRM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.genoMatrix.genoMatrix.allBiallelic">
+<code class="descname">allBiallelic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.genoMatrix.genoMatrix.allBiallelic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.genoMatrix.genoMatrix.freq">
+<code class="descname">freq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.genoMatrix.genoMatrix.freq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="simbreed.genoMatrix.namedMatrix">
+<em class="property">class </em><code class="descclassname">simbreed.genoMatrix.</code><code class="descname">namedMatrix</code><span class="sig-paren">(</span><em>matrix</em>, <em>rownames=None</em>, <em>colnames=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.genoMatrix.namedMatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="simbreed.genoMatrix.namedMatrix.colnames">
+<code class="descname">colnames</code><a class="headerlink" href="#simbreed.genoMatrix.namedMatrix.colnames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.genoMatrix.namedMatrix.getIndices">
+<code class="descname">getIndices</code><span class="sig-paren">(</span><em>value</em>, <em>ref</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.genoMatrix.namedMatrix.getIndices" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="simbreed.genoMatrix.namedMatrix.rownames">
+<code class="descname">rownames</code><a class="headerlink" href="#simbreed.genoMatrix.namedMatrix.rownames" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="simbreed-playground-module">
+<h2>simbreed.playground module<a class="headerlink" href="#simbreed-playground-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="simbreed-profile-module">
+<h2>simbreed.profile module<a class="headerlink" href="#simbreed-profile-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-simbreed">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-simbreed" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">simbreed package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-simbreed.CrossoverSimulator">simbreed.CrossoverSimulator module</a></li>
+<li><a class="reference internal" href="#module-simbreed.Functions">simbreed.Functions module</a></li>
+<li><a class="reference internal" href="#module-simbreed.Population">simbreed.Population module</a></li>
+<li><a class="reference internal" href="#simbreed-deleteme-module">simbreed.deleteme module</a></li>
+<li><a class="reference internal" href="#module-simbreed.genoMatrix">simbreed.genoMatrix module</a></li>
+<li><a class="reference internal" href="#simbreed-playground-module">simbreed.playground module</a></li>
+<li><a class="reference internal" href="#simbreed-profile-module">simbreed.profile module</a></li>
+<li><a class="reference internal" href="#module-simbreed">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/simbreed.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Dominik Mueller.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="_sources/simbreed.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

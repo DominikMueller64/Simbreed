@@ -1,0 +1,12 @@
+simbreed/CrossoverSimulator.py
+simbreed/Functions.py
+simbreed/Population.py
+simbreed/__init__.py
+simbreed/deleteme.py
+simbreed/genoMatrix.py
+simbreed/playground.py
+simbreed/profile.py
+simbreed.egg-info/PKG-INFO
+simbreed.egg-info/SOURCES.txt
+simbreed.egg-info/dependency_links.txt
+simbreed.egg-info/top_level.txt
