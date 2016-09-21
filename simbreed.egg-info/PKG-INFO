@@ -1,8 +1,8 @@
 Metadata-Version: 1.0
 Name: simbreed
 Version: 0.1
-Summary: Package for simulation in plant breeding.
-Home-page: https://github.com/X
+Summary: Package for simulations in plant breeding.
+Home-page: https://github.com/DominikMueller64/Simbreed
 Author: Dominik Mueller
 Author-email: Dominik_Mueller@uni-hohenheim.de
 License: GPLv3
