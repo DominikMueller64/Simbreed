@@ -118,7 +118,9 @@ pop.getReproGroups(generation=2, reproGroupGen=1)
 
 pop = skPop.fromPedPop(population=pop, chromLengths=chromLengths,
                        crossoverSimulator=cS)
-plotMatrix(pop.realIBDMatrix().matrix)
+plotMatrix(pop.realIBD().matrix)
+pop.getSegmentBorders(ID=pop.getID(pop.lastGen()))
+
 
 
 founderFlesh = {fid: [[np.random.choice(a=(0, 1), size=n) for n in numLociPerChrom]

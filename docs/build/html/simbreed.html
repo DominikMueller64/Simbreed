@@ -8,7 +8,7 @@
     
     <title>simbreed package &mdash; simbreed 1.0 documentation</title>
     
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
@@ -23,15 +23,21 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="simbreed 1.0 documentation" href="index.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="top" title="simbreed 1.0 documentation" href="index.html" /> 
   </head>
   <body role="document">
-  
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">simbreed 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -51,11 +57,6 @@
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 <p>Simulate crossover locations on a single meiotic product using
 the Stahl model.</p>
-<p>m : Interference parameter</p>
-<p>p : Proportion of chiasmata from non-interference mechanism</p>
-<p>obligateChiasma : Boolean indicating if obligate chiasma is required</p>
-<p>This is a Python translation of the crossover simulator used in the
-R-package &#8216;simcross&#8217; of Karl. W. Broman [Add link to github here].</p>
 <p>Chiasma locations are a superposition of two processes: a proportion p
 exhibiting no interference, and a proportion (1-p) following the
 chi-square model with interference parameter m. Crossover locations are
@@ -64,8 +65,9 @@ derived by thinning the chiasma locations with probability 1/2.</p>
 being an integer. This is an extension of the chi-square model, but with
 chiasmata being the superposition of two processes, one following the
 chi-square model and the other exhibiting no interference.</p>
-<p>The source code is a translation from
-<a class="reference external" href="https://github.com/kbroman/simcross/">R/simcross</a> package</p>
+<p>This is a Python translation of the crossover simulator used in the
+R-package <a class="reference external" href="https://github.com/kbroman/simcross/">R/simcross</a> .</p>
+<p class="rubric">References</p>
 <p>Copenhaver, G. P., Housworth, E. A. and Stahl, F. W. (2002) Crossover
 interference in arabidopsis. Genetics 160, 1631–1639.</p>
 <p>Foss, E., Lande, R., Stahl, F. W. and Steinberg, C. M. (1993) Chiasma
@@ -76,14 +78,28 @@ crossover interference using the chi-square model. Genetics 139, 1045–1056.</p
 <dt id="simbreed.CrossoverSimulator.CrossoverSimulator.simulateCrossover">
 <code class="descname">simulateCrossover</code><span class="sig-paren">(</span><em>L</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.CrossoverSimulator.CrossoverSimulator.simulateCrossover" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulate crossing over events</p>
-<dl class="docutils">
-<dt>L</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">positive float</span><dd>Length of the chromosome in centiMorgan</dd>
-</dl>
-<dl class="docutils">
-<dt>out</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>A list with the positions of crossover events</dd>
-</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>L</strong> (<em>float</em>) &#8211; chromosome length in centiMorgan</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">crossover locations</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.ndarray</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Example</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">simbreed</span> <span class="k">import</span> <span class="n">CrossoverSimulator</span>
+<span class="n">cs</span> <span class="o">=</span> <span class="n">CrossoverSimulator</span><span class="p">()</span>
+<span class="n">cs</span><span class="o">.</span><span class="n">simulateCrossover</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The chromosomeLength <code class="docutils literal"><span class="pre">L</span></code> must be positive.</p>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -91,17 +107,20 @@ crossover interference using the chi-square model. Genetics 139, 1045–1056.</p
 <dl class="attribute">
 <dt id="simbreed.CrossoverSimulator.dpoisson">
 <code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">dpoisson</code><a class="headerlink" href="#simbreed.CrossoverSimulator.dpoisson" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Probabiltiy density function of the poission distribution.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="simbreed.CrossoverSimulator.factorial">
 <code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">factorial</code><a class="headerlink" href="#simbreed.CrossoverSimulator.factorial" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the factorial k! := 1 * 2 * ... * (k - 1) * k.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="simbreed.CrossoverSimulator.funcToZero">
 <code class="descclassname">simbreed.CrossoverSimulator.</code><code class="descname">funcToZero</code><a class="headerlink" href="#simbreed.CrossoverSimulator.funcToZero" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Likelihood function</p>
+</dd></dl>
 
 </div>
 <div class="section" id="module-simbreed.Functions">
@@ -143,6 +162,18 @@ crossover interference using the chi-square model. Genetics 139, 1045–1056.</p
 <dt>out</dt>
  <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span><dd>Returns <code class="docutils literal"><span class="pre">True</span></code> is all elements in are unique and <code class="docutils literal"><span class="pre">False</span></code> if not.</dd>
 </dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">allUnique</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">allUnique</span><span class="p">((</span><span class="kc">None</span><span class="p">,</span> <span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">allUnique</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -156,9 +187,17 @@ crossover interference using the chi-square model. Genetics 139, 1045–1056.</p
  <span class="classifier-delimiter">:</span> <span class="classifier">float (default = 1e-6)</span><dd>The absolute tolerance used to check if values are distinct.</dd>
 </dl>
 <dl class="docutils">
-<dt>out</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span><dd>True if any pair is close, False otherwise.</dd>
+<dt>boolean</dt>
+<dd>True if any pair is close, False otherwise.</dd>
 </dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">anyClose</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.001</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">anyClose</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.001</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">abs_tol</span><span class="o">=</span><span class="mi">1</span><span class="n">e</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -175,42 +214,27 @@ crossover interference using the chi-square model. Genetics 139, 1045–1056.</p
 <dl class="function">
 <dt id="simbreed.Functions.getNewID">
 <code class="descclassname">simbreed.Functions.</code><code class="descname">getNewID</code><span class="sig-paren">(</span><em>n=1</em>, <em>digits=14</em>, <em>sequence=False</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.getNewID" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="simbreed.Functions.getNewIDNumbaArray">
-<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewIDNumbaArray</code><a class="headerlink" href="#simbreed.Functions.getNewIDNumbaArray" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="simbreed.Functions.getNewIDNumbaSingle">
-<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewIDNumbaSingle</code><a class="headerlink" href="#simbreed.Functions.getNewIDNumbaSingle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="simbreed.Functions.getNewID_old">
-<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewID_old</code><span class="sig-paren">(</span><em>n=1</em>, <em>nChar=8</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.getNewID_old" title="Permalink to this definition">¶</a></dt>
-<dd><p>Get a new UUID (Universally Unique Identifier).</p>
+<dd><p>Get a new ID.</p>
 <dl class="docutils">
 <dt>n</dt>
  <span class="classifier-delimiter">:</span> <span class="classifier">natural number (default = 1)</span><dd>The number of IDs that should be generated.</dd>
 <dt>nChar</dt>
  <span class="classifier-delimiter">:</span> <span class="classifier">int (default = 8)</span><dd>The number of characters of the ID.</dd>
 </dl>
-<dl class="docutils">
-<dt>out</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">integer or list of integers</span><dd><div class="first last line-block">
-<div class="line">If n = 1, corresponding to the default, then a single ID is returned.</div>
-<div class="line">If n &gt; 1, a list of IDs is returned.</div>
-</div>
-</dd>
-</dl>
-<p>If nChar &lt; 22, the ID is not guaranteed to be universally unique (UUID).
-However, for the default (nChar = 8), there are 57^8 =~ 100 Billon
-possible sequences, which still guarantees an essentially zero collision
-probability within a simulation session while greatly increasing
-readability of IDs for introspection.</p>
+<ul class="simple">
+<li>If n = 1, corresponding to the default, then a single ID is returned.</li>
+<li>If n &gt; 1, a list of IDs is returned.</li>
+</ul>
+<p>The IDs returned here are uniformly distributed samples of positive
+integers with a number of <code class="docutils literal"><span class="pre">digits</span></code> digits. As such, they are not
+universally unique and there is a certain probability of collision,
+depending on <code class="docutils literal"><span class="pre">digits</span></code>.</p>
 </dd></dl>
+
+<dl class="function">
+<dt id="simbreed.Functions.getNewID_old">
+<code class="descclassname">simbreed.Functions.</code><code class="descname">getNewID_old</code><span class="sig-paren">(</span><em>n=1</em>, <em>nChar=8</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Functions.getNewID_old" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="attribute">
 <dt id="simbreed.Functions.helper">
@@ -251,9 +275,17 @@ iterables of neighbouring vertices. For example:</p>
  <span class="classifier-delimiter">:</span> <span class="classifier">float (default = 1e-6)</span><dd>The absolute tolerance used to check if values are distinct.</dd>
 </dl>
 <dl class="docutils">
-<dt>out</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">boolean</span><dd>If the iterable is (reverse) sorted <code class="docutils literal"><span class="pre">True</span></code>, otherwise <code class="docutils literal"><span class="pre">False</span></code>.</dd>
+<dt>boolean</dt>
+<dd>If the iterable is (reverse) sorted <code class="docutils literal"><span class="pre">True</span></code>, otherwise <code class="docutils literal"><span class="pre">False</span></code>.</dd>
 </dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isSorted</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="n">e5</span><span class="p">))</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">isSorted</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="go">False</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="function">
@@ -297,9 +329,23 @@ Must support indexing.</dd>
  <span class="classifier-delimiter">:</span> <span class="classifier">boolean (default = False)</span><dd>Should the order be that of the reverse sorted iterable?</dd>
 </dl>
 <dl class="docutils">
-<dt>out</dt>
- <span class="classifier-delimiter">:</span> <span class="classifier">list</span><dd>List of integers with the (reverse) order of elements in <code class="docutils literal"><span class="pre">iterable</span></code>.</dd>
+<dt>list</dt>
+<dd>List of integers with the (reverse) order of elements in <code class="docutils literal"><span class="pre">iterable</span></code>.</dd>
 </dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">order</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="go">[2, 1, 0]</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">order</span><span class="p">((</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+<span class="go">[1, 0]</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">order</span><span class="p">([</span><span class="mf">5.5</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">])</span>
+<span class="gt">Traceback (most recent call last):</span>
+ <span class="c">...</span>
+<span class="gr">TypeError</span>: <span class="n">unorderable types: str() &lt; float()</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="attribute">
@@ -707,6 +753,12 @@ for simulation studies.</p>
 </dd></dl>
 
 <dl class="method">
+<dt id="simbreed.Population.pedPop.getLastID">
+<code class="descname">getLastID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.getLastID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all IDs of the last generation.</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="simbreed.Population.pedPop.getReproGroups">
 <code class="descname">getReproGroups</code><span class="sig-paren">(</span><em>reproGroupGen</em>, <em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.pedPop.getReproGroups" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -832,6 +884,11 @@ traits are only influenced by nuclear DNA.</p>
 <dl class="method">
 <dt id="simbreed.Population.skPop.getLineage">
 <code class="descname">getLineage</code><span class="sig-paren">(</span><em>pos</em>, <em>chrom</em>, <em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.getLineage" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="simbreed.Population.skPop.getSegmentBorders">
+<code class="descname">getSegmentBorders</code><span class="sig-paren">(</span><em>ID=None</em>, <em>generation=None</em><span class="sig-paren">)</span><a class="headerlink" href="#simbreed.Population.skPop.getSegmentBorders" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -969,13 +1026,7 @@ from the founder genomes.</p>
 </ul>
 </li>
 </ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  </ul></li>
-</ul>
-</div>
+
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -997,20 +1048,21 @@ from the founder genomes.</p>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2016, Dominik Mueller.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
-      
-      |
-      <a href="_sources/simbreed.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">simbreed 1.0 documentation</a> &raquo;</li> 
+      </ul>
     </div>
-
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2016, Dominik Mueller.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.1.
+    </div>
   </body>
 </html>

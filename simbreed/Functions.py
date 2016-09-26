@@ -34,32 +34,23 @@ def allUnique(x):
     out : boolean
       Returns ``True`` is all elements in are unique and ``False`` if not.
 
+    >>> allUnique([1,2,3])
+    True
+    
+    >>> allUnique((None, ))
+    True
+    
+    >>> allUnique((1,2,3,4,2))
+    False
+
     """
     seen = set()
     return not any(i in seen or seen.add(i) for i in x)
 # %%
 
+
 def getNewID_old(n=1, nChar=8):
-    """Get a new UUID (Universally Unique Identifier).
-
-    Parameters
-    ----------
-    n : natural number (default = 1)
-      The number of IDs that should be generated.
-    nChar : int (default = 8)
-      The number of characters of the ID.
-    Returns
-    -------
-    out : integer or list of integers
-      | If n = 1, corresponding to the default, then a single ID is returned.
-      | If n > 1, a list of IDs is returned.
-
-    If nChar < 22, the ID is not guaranteed to be universally unique (UUID).
-    However, for the default (nChar = 8), there are 57^8 =~ 100 Billon
-    possible sequences, which still guarantees an essentially zero collision
-    probability within a simulation session while greatly increasing
-    readability of IDs for introspection.
-    """
+    
     def fnc():
         uid = shortuuid.uuid()
         if nChar < 1 or nChar > len(uid):
@@ -74,7 +65,7 @@ def getNewID_old(n=1, nChar=8):
 
 
 @jit(nopython=True)
-def getNewIDNumbaArray(n, digits):
+def _getNewIDNumbaArray(n, digits):
     tmp = 10**(digits-1)
     ret = np.zeros(n, np.int64)
     for i in range(n):
@@ -82,17 +73,37 @@ def getNewIDNumbaArray(n, digits):
     return ret
 
 @jit(nopython=True)
-def getNewIDNumbaSingle(digits):
+def _getNewIDNumbaSingle(digits):
     tmp = 10**(digits-1)
     return random.randint(tmp, 10 * tmp - 1)
 
 def getNewID(n=1, digits=14, sequence=False):
+    """Get a new ID.
+
+    Parameters
+    ----------
+    n : natural number (default = 1)
+      The number of IDs that should be generated.
+    nChar : int (default = 8)
+      The number of characters of the ID.
+
+    Returns
+    -------
+    - If n = 1, corresponding to the default, then a single ID is returned.
+    - If n > 1, a list of IDs is returned.
+    
+    The IDs returned here are uniformly distributed samples of positive
+    integers with a number of ``digits`` digits. As such, they are not
+    universally unique and there is a certain probability of collision,
+    depending on ``digits``.
+
+    """
     if n == 1:
         if sequence:
-            return [getNewIDNumbaSingle(digits=digits)]
-        return getNewIDNumbaSingle(digits=digits)
+            return [_getNewIDNumbaSingle(digits=digits)]
+        return _getNewIDNumbaSingle(digits=digits)
     else:
-        return getNewIDNumbaArray(n=n, digits=digits).tolist()
+        return _getNewIDNumbaArray(n=n, digits=digits).tolist()
 
 #%timeit -n10000 -r10 for _ in range(5): getNewIDNumbaSingle(14)
 #%timeit -n10000 -r10 getNewID(n=5)
@@ -116,8 +127,14 @@ def isSorted(iterable, reverse=False, abs_tol=1e-6):
 
     Returns
     -------
-    out : boolean
+    boolean
       If the iterable is (reverse) sorted ``True``, otherwise ``False``.
+      
+    >>> isSorted((1, 1.4, 5, 1e5))
+    True
+    
+    >>> isSorted((4, -1, 5))
+    False
 
     """
     def pairwise(iterable):
@@ -150,8 +167,16 @@ def anyClose(iterable, abs_tol=1e-6):
 
     Returns
     -------
-    out : boolean
+    boolean
       True if any pair is close, False otherwise.
+     
+    >>> anyClose([1, 2, 2.001, 3], abs_tol=1e-6)
+    False
+    
+    >>> anyClose([1, 2, 2.001, 3], abs_tol=1e-3)
+    True
+     
+    
 
     """
     def pairwise(iterable):
@@ -180,8 +205,20 @@ def order(iterable, reverse=False):
 
     Returns
     -------
-    out : list
+    list
       List of integers with the (reverse) order of elements in ``iterable``.
+
+
+    >>> order((3,2,1))
+    [2, 1, 0]
+
+    >>> order((True, False))
+    [1, 0]
+
+    >>> order([5.5, 's'])
+    Traceback (most recent call last):
+     ...
+    TypeError: unorderable types: str() < float()
 
     """
     return sorted(range(len(iterable)), key=lambda k: iterable[k],

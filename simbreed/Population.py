@@ -884,6 +884,10 @@ class pedPop(TheDict):
     def lastGen(self):
         """ Return the number of the last generation. """
         return max(e.generation for e in self.values())
+    
+    def getLastID(self):
+        """ Return all IDs of the last generation. """
+        return self.getID(generation=self.lastGen())
 
     def _subset(self, Ind):
         """ For internal use only. """
@@ -2038,6 +2042,23 @@ class skPop(pedPop):
 
             ret[i] = lin(paternal=temp[0], maternal=temp[1])
         return ret
+
+    def getSegmentBorders(self, ID=None, generation=None):
+        ID = IDGenerationHandler(idGetter=self.getID, ID=ID, generation=generation)
+        ret = list()   
+        for cx in range(len(self.chromLengths)):
+            tmp = set()
+            for i in ID:
+                for g in self[i].gametes:
+                   tmp.update(g.skeleton[cx]['locations'])
+                   tmp.discard(self.chromLengths[cx])
+            ret.append(sorted(list(tmp)))
+        return ret
+                
+        
+
+
+
 
 
 class genoPop(skPop):
